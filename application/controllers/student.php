@@ -12,8 +12,11 @@ class student extends CI_Controller{
     }
     public function register(){
         $this->load->helper('form');
+        $this->load->model('student_model');
+        $data['branches']=$this->student_model->get_branches();
+        
         $this->load->view('student/template/header');
-        $this->load->view('student/register');
+        $this->load->view('student/register',$data);
         $this->load->view('student/template/footer');
     }
     public function inbox(){
@@ -56,10 +59,10 @@ class student extends CI_Controller{
       $this->load->helper('form');
       $this->load->library('form_validation');
       
-      $this->form_validation->set_rules('roll_number','Roll Number','trim|required');
+      $this->form_validation->set_rules('roll_number','Roll Number','trim|required|callback_check_roll_number');
       $this->form_validation->set_rules('student_name','Student Name','trim|required');
       $this->form_validation->set_rules('semester','Semester','trim|required');
-      $this->form_validation->set_rules('branch','Branch','trim|required');
+      $this->form_validation->set_rules('branch','Branch','trim|required|greater_than[0]');
       $this->form_validation->set_rules('personal_contact','Personal Contact','trim|required');
       $this->form_validation->set_rules('parental_contact','Parental Contact','trim|required');
       $this->form_validation->set_rules('living_town','Living Town','trim|required');
@@ -69,6 +72,10 @@ class student extends CI_Controller{
       $this->form_validation->set_rules('password','Password','trim|required');
       $this->form_validation->set_rules('confirm_password','Confirm Password','trim|required|matches[password]');
       $this->form_validation->set_rules('captcha','Captcha','trim|required');
+      
+      $this->form_validation->set_message('greater_than', 'You Must Choose a valid Branch Name');
+      $this->form_validation->set_message('check_username', 'Username already exist.');
+      $this->form_validation->set_message('check_roll_number', 'Roll Number already exist.');
       
       if($this->form_validation->run()==FALSE){
         $this->load->helper('form');
@@ -80,8 +87,16 @@ class student extends CI_Controller{
       }
     }
     public function check_username($username){
-        
+        $this->load->model('student_model');
+        $query = $this->student_model->check_username($username);
+        return $query;
+    }
+    public function check_roll_number($roll_number){
+        $this->load->model('student_model');
+        $query = $this->student_model->check_rollno($roll_number);
+        return $query;
     }
 }
+
 
 ?>

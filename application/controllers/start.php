@@ -5,6 +5,7 @@ class start extends CI_Controller{
     public function __construct() {
       parent::__construct();
      $this->load->library('session');
+     $this->load->helper('url');
     }
     public function index(){
         $this->load->helper('form');
@@ -27,7 +28,11 @@ class start extends CI_Controller{
             $this->index();
         }else{
             $this->load->model('login_model');
-            $query = $this->login_model->validate_login();
+            $query = $this->login_model->validate_login(
+                    $this->input->post('username'),
+                    $this->input->post('password'),
+                    $this->input->post('account_type')
+                    );
             if($query){
                $newdata = array(
                    'username'  => $this->input->post('username'),
@@ -36,7 +41,13 @@ class start extends CI_Controller{
                    'logged_in' => TRUE
                );
               $this->session->set_userdata($newdata); 
-             echo 'success';
+              
+              switch ($this->session->userdata('account_type')){
+                  case '1':redirect(URL.'index.php/student');break;
+                  case '2':redirect(URL.'index.php/teacher');break;
+                  case '3':redirect(URL.'index.php/hod');break;
+                  case '4':redirect(URL.'index.php/director');break;
+              }
                 
             }else{
                   $this->session->set_flashdata('message','Wrong Username/Password');

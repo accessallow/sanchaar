@@ -1,5 +1,5 @@
 <?php
-class Student_model extends CI_Model {
+class Teacher_model extends CI_Model {
 
 	public function __construct()
 	{
@@ -7,23 +7,15 @@ class Student_model extends CI_Model {
 	}
         public function check_username($username){
             $this->db->where(array('username'=>$username));
-            $query = $this->db->get('students');
+            $query = $this->db->get('teachers');
             if($query->num_rows==1){
                 return false;
             }else{
                 return true;
             }
         }
-         public function check_rollno($roll_number){
-            $this->db->where(array('roll_number'=>$roll_number));
-            $query = $this->db->get('students');
-            if($query->num_rows==1){
-                return false;
-            }else{
-                return true;
-            }
-        }
-        public function get_branches(){
+       
+        public function get_departments(){
             $query = $this->db->get('branches');
             return $query->result_array();
         }

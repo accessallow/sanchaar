@@ -86,38 +86,38 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="<?php echo URL.'index.php/Student/';?>">Student</a>
+          <a class="brand" href="<?php echo URL.'index.php/teacher/';?>">Teacher</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-               <li>  <a href="<?php echo URL.'index.php/Student/';?>">Home</a>  </li>
+               <li>  <a href="<?php echo URL.'index.php/teacher/';?>">Home</a>  </li>
              <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Message  <span class="badge badge-warning">6</span></a>
                   <ul class="dropdown-menu">
-                      <li><a href="<?php echo URL.'index.php/Student/inbox';?>">Inbox <?php for($i=0;$i<=12;$i++) echo'&nbsp;';?><span class="badge badge-important">6</span></a></li>
-                    <li><a href="<?php echo URL.'index.php/Student/sentbox';?>">Sent</a></li>
+                      <li><a href="<?php echo URL.'index.php/teacher/inbox';?>">Inbox <?php for($i=0;$i<=12;$i++) echo'&nbsp;';?><span class="badge badge-important">6</span></a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/sentbox';?>">Sent</a></li>
                     
                   </ul>
             </li>
            
             
-             <li>  <a href="<?php echo URL.'index.php/Student/directory';?>">Directory</a>  </li>
+             <li>  <a href="<?php echo URL.'index.php/teacher/directory';?>">Directory</a>  </li>
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notice <span class="badge badge-important">6</span></a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?php echo URL.'index.php/Student/noticeboard';?>">Global<?php for($i=0;$i<=12;$i++) echo'&nbsp;';?><span class="badge badge-important">6</span></a></li>
-                    <li><a href="<?php echo URL.'index.php/Student/noticeboard';?>">Departmental</a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/noticeboard';?>">Global<?php for($i=0;$i<=12;$i++) echo'&nbsp;';?><span class="badge badge-important">6</span></a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/noticeboard';?>">Departmental</a></li>
                    
                   </ul>
             </li>
-             <li>  <a href="<?php echo URL.'index.php/Student/complaint';?>">Complaint</a>  </li>
+             <li>  <a href="<?php echo URL.'index.php/teacher/complaint';?>">Complaint</a>  </li>
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">DashBoard</a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?php echo URL.'index.php/Student/profile';?>">Edit Profile</a></li>
-                    <li><a href="<?php echo URL.'index.php/Student/settings';?>">Change Password</a></li>
-                    <li><a href="<?php echo URL.'index.php/Student/logout';?>">Logout</a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/profile';?>">Edit Profile</a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/settings';?>">Change Password</a></li>
+                    <li><a href="<?php echo URL.'index.php/teacher/logout';?>">Logout</a></li>
                   </ul>
             </li>
             </ul>

@@ -5,17 +5,26 @@ class Login_model extends CI_Model {
 	{
 		$this->load->database();
 	}
-        public function validate_login(){
-             if($this->input->post('account_type')=='1'){
-                 return $this->validate_student_login();
+        public function validate_login($username,$password,$account_type){
+             if($account_type=='1'){
+                 return $this->validate_login_by_table('students',$username,$password);
+             }
+             else if($account_type=='2'){
+                  return $this->validate_login_by_table('teachers',$username,$password);
+             }
+             else if($account_type=='3'){
+                 return $this->validate_login_by_table('hods',$username,$password);
+             }
+             else if($account_type=='4'){
+                 return $this->validate_login_by_table('director',$username,$password);
              }
         }
-        public function validate_student_login(){
+        public function validate_login_by_table($tablename,$username,$password){
             $this->db->where(array(
-                'roll_number'=>$this->input->post('username'),
-                'password'=>md5($this->input->post('password'))
+                'username'=>$username,
+                'password'=>md5($password)
             ));
-            $query = $this->db->get('students');
+            $query = $this->db->get($tablename);
            if($query->num_rows==1){
                return true;
            }else
@@ -23,35 +32,36 @@ class Login_model extends CI_Model {
                
             
         }
-        public function validate_teacher_login(){
-              $this->db->where(array(
-                'username'=>$this->input->post('username'),
-                'password'=>$this->input->post('password')
-            ));
-            $query = $this->db->get('teachers');
-           if($query->num_rows==1){
-               return true;
+        
+        
+        
+        public function getinfo($username){
+           if($this->get_info_by_table('students', $username)){
+               return $this->get_info_by_table('students', $username);
            }
+            else if($this->get_info_by_table('teachers', $username)){
+               return $this->get_info_by_table('teachers', $username);
+           }
+            else if($this->get_info_by_table('hod', $username)){
+               return $this->get_info_by_table('hod', $username);
+           }
+            else if($this->get_info_by_table('director', $username)){
+               return $this->get_info_by_table('director', $username);
+           }
+           else return false;
         }
-        public function validate_hod_login(){
-              $this->db->where(array(
-                'username'=>$this->input->post('username'),
-                'password'=>$this->input->post('password')
+        public function get_info_by_table($tablename,$username){
+             $this->db->where(array(
+                'username'=>$username
             ));
-            $query = $this->db->get('hod');
-           if($query->num_rows==1){
-               return true;
-           }
-        }
-        public function validate_director_login(){
-              $this->db->where(array(
-                'username'=>$this->input->post('username'),
-                'password'=>$this->input->post('password')
-            ));
-            $query = $this->db->get('director');
-           if($query->num_rows==1){
-               return true;
-           }
+            $query=$this->db->get($tablename);
+            if($query->num_rows==1){
+                return array(
+                    'username'=>$query->row_array['username'],
+                    'account_type'=>'s',
+                    'username'=>$query->row_array['username'],
+                );
+            }
         }
         
        

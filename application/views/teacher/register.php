@@ -2,36 +2,44 @@
     <?php echo validation_errors('<div class="alert alert-error">
 <button type="button" class="close" data-dismiss="alert">&times;</button>
 <strong>Error!</strong> ','</div>');?>
-    <?php echo form_open('student/validate_signup');?>
+    <?php echo form_open('teacher/validate_signup');?>
     <div class='span8'>
                   <table class='table table-bordered'>
                       <tr>
                           <td colspan="4" style="background-color: #0064cd;color:white;">Personal Details</td>
                       </tr>
                       <tr>
-                          <td><label>Roll No</label></td>
-                          <td><input type="text" name='roll_number' value="<?php echo $this->input->post('roll_number');?>"/></td>
                           <td><label>Name</label></td>
-                          <td><input type="text" name='student_name' value="<?php echo $this->input->post('student_name');?>"/></td>
+                          <td><input type="text" name='name' value="<?php echo $this->input->post('roll_number');?>"/></td>
+                          <td><label>Department</label></td>
+                          <td><select name='department'>
+                                   
+                               <option value="0">Select Department</option>  
+                               <?php foreach ($departments as $department) {?>
+                               <option value="<?php echo $department['branch_id'];?>"><?php echo $department['branch_name'];?></option>  
+                               <?php } ?>
+                             
+                              </select>  
+                          </td>
                       </tr>
-                        <tr>
-                          <td><label>Semester</label></td>
-                          <td><input type="text" name='semester'  value="<?php echo $this->input->post('semester');?>"/></td>
-                          <td><label>Branch</label></td>
-                          <td><input type="text" name='branch'  value="<?php echo $this->input->post('branch');?>"/></td>
+                      <tr>
+                          <td><label>Joining Year</label></td>
+                          <td><select name='joining_year'>
+                              <option value="0">Select Year</option>   
+                              <?php  for($y = 1994;$y<=date('Y');$y++){?>
+                                  <option value="<?php echo $y;?>"><?php echo $y;?></option>
+                              <?php   }?>
+                              </select>
+                          </td>
+                           <td><label>Personal Contact</label></td>
+                           <td><input type="text" name='personal_contact' value="<?php echo $this->input->post('personal_contact');?>"/></td>
                       </tr>
-                        <tr>
-                          <td><label>Personal Contact</label></td>
-                          <td><input type="text" name='personal_contact' value="<?php echo $this->input->post('personal_contact');?>"/></td>
-                          <td><label>Parental Contact</label></td>
-                          <td><input type="text" name='parental_contact' value="<?php echo $this->input->post('parental_contact');?>"/></td>
+                      <tr>
+                         <td><label>Qualifications</label></td>
+                         <td colspan="3"><textarea name='qualification' class="input-block-level" rows="5"><?php echo $this->input->post('branch');?></textarea></td>
+                         
                       </tr>
-                        <tr>
-                          <td><label>Living Town</label></td>
-                          <td><input type="text" name='living_town' value="<?php echo $this->input->post('living_town');?>"/></td>
-                          <td><label>Postal Address</label></td>
-                          <td><textarea name='postal_address'><?php echo $this->input->post('postal_address');?></textarea></td>
-                      </tr>
+                     
                   </table>
     </div>
     <div class='span4'>

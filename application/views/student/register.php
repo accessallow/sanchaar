@@ -18,7 +18,14 @@
                           <td><label>Semester</label></td>
                           <td><input type="text" name='semester'  value="<?php echo $this->input->post('semester');?>"/></td>
                           <td><label>Branch</label></td>
-                          <td><input type="text" name='branch'  value="<?php echo $this->input->post('branch');?>"/></td>
+                          <td> 
+                              <select name="branch">
+                                   <option value="0">Select Branch</option>  
+                                  <?php foreach ($branches as $branch) {?>
+                                  <option value="<?php echo $branch['branch_id'];?>"><?php echo $branch['branch_name'];?></option>  
+                                  <?php } ?>
+                              </select>
+                          </td>
                       </tr>
                         <tr>
                           <td><label>Personal Contact</label></td>
@@ -45,8 +52,8 @@
                     <div class='form-horizontal'>
                     <input type='text' name='username' value="<?php echo $this->input->post('username');?>"/> 
                    
-                    <button class='btn'onclick=''><i class='icon icon-search'></i></button>
-                     <i class='icon icon-check'></i>
+                   
+                    
                     </div>
                     </td>
                     
