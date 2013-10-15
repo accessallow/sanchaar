@@ -7,8 +7,8 @@
                        <tr>
                           <td colspan="4">
                               <div class="pull-right">
-                                    
-                            &nbsp;  <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i> Delete</button>  
+                            <button onclick='send_enable();'class='btn' id='btn1' data-toggle="tooltip" title="Reply"><i class='icon-retweet'></i></button>          
+                            &nbsp;  <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i></button>  
                               </div>
                               
                           </td>
@@ -23,7 +23,7 @@
                     <?php 
                     for($i=0;$i<10;$i++){ ?>
                       <tr>
-                          <td><center><input type="checkbox"/></center></td>
+                          <td s><center><input type="checkbox"/></center></td>
                           <td>Sanjana Subhash</td>
                            <td>4:45 PM</td>
                           <td>11-Oct-2013</td>
@@ -42,8 +42,8 @@
             </tr>
              <tr>  
              <td>
-                 <button onclick='send_enable();'class='btn' id='btn1' data-toggle="tooltip" title="Reply"><i class='icon-retweet'></i> Reply</button>          
-                 <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i> Delete</button>  
+                 <button onclick='send_enable();'class='btn' id='btn1' data-toggle="tooltip" title="Reply"><i class='icon-retweet'></i></button>          
+                 <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i></button>  
                   <button class='hidden' id='btn3' data-toggle="tooltip" title="Delete"><i class='icon-ok icon-white'></i> Send</button>  
                  
              </td>
