@@ -47,3 +47,5 @@ define('ICO',URL.'bootstrap/ico/');
 define('PLUGINS',URL.'bootstrap/bootstrap_plugins/');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
+
+define('IMAGE_SERVER','http://localhost/image_server/');

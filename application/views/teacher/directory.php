@@ -1,16 +1,20 @@
 <div class="row-fluid">
-    <div class="span10">
+    <div class="span11">
         <table class="table table-bordered">
             <tr>
                 <td colspan="4" style="background-color: #0064cd;color:white;">Student Directory</td>
             </tr>
             
             <tr>
-            <td class="form-inline">
-                <input type="text" class="search-query" placeholder="Student's Name"/>
-                <button class='btn'><i class='icon-search'></i></button>
+                  <form id='frm1' action="<?php echo URL.'index.php/teacher/search'; ?>" method='post'>
+            <td class='form-inline'>
+              
+                <input type="text" name='student_name' class="search-query" placeholder="Student's Name"/>
+                <button class='btn' onclick='document.getElementById("frm1").submit();'><i class='icon-search'></i></button>
+                
+                
                 <div class='pull-right'>
-                <select>
+                <select name='student_sem'>
                     <option selected="selected" value='0'>Semester</option>
                     <option value='1'>1</option>
                     <option value='2'>2</option>
@@ -21,20 +25,17 @@
                     <option value='7'>7</option>
                     <option value='8'>8</option>
                 </select>
-                 <select>
-                    <option selected="selected" value='0'>Branch</option>
-                    <option value='1'>Computer Science</option>
-                    <option value='2'>Computer Science</option>
-                    <option value='3'>Computer Science</option>
-                    <option value='4'>Computer Science</option>
-                    <option value='5'>Computer Science</option>
-                    <option value='6'>Computer Science</option>
-                    <option value='7'>Computer Science</option>
-                    <option value='8'>Computer Science</option>
-                </select>
-                 <button class='btn'><i class='icon-search'></i></button>
+                 <select name="student_branch">
+                                   <option value="0">Select Branch</option>  
+                                  <?php foreach ($branches as $branch) {?>
+                                  <option value="<?php echo $branch['branch_id'];?>"><?php echo $branch['branch_name'];?></option>  
+                                  <?php } ?>
+                              </select>
+                 <button class='btn' onclick='document.getElementById("frm1").submit();'><i class='icon-search'></i></button>
                 </div>
-            </td>   
+                
+            </td>
+            </form>
             </tr>
         
             <tr>
@@ -46,7 +47,8 @@
   
 </div>
 <div class="row-fluid">
-    <div class="span10">
+    <div class="span11">
+        <?php if(isset($students)){?>
         <table class="table table-bordered">
             <tr>
                 <td colspan="4" style="background-color: #0064cd;color:white;">Search Results</td>
@@ -58,15 +60,19 @@
                 <td>Branch</td>
                 <td class='span2'>Action</td>
             </tr>
-            <?php for($i=0;$i<10;$i++){?>
+            <?php foreach($students as $student){?>
           <tr>
-                <td>Pankaj Tiwari</td>
-                <td class='span1'>5</td>
-                <td>Computer Science</td>
-                <td class='span2'><a href='#'>View Profile</a></td>
+                <td><?php echo $student['student_name'];?></td>
+                <td class='span1'><?php echo $student['semester'];?></td>
+                <td><?php echo $student['branch'];?></td>
+                <td class='span4'><a href='<?php echo URL.'index.php/student/profile/'.$student['roll_number'];?>'>View Profile</a>
+                
+                    &nbsp;&nbsp;<a href='<?php echo URL.'index.php/teacher/adopt/'.$student['roll_number'];?>'>Adopt</a>
+               </td>
           </tr>
             <?php } ?>
         </table> 
+        <?php } ?>
     </div>
   
 </div>

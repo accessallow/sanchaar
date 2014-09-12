@@ -17,6 +17,7 @@
       html,
       body {
         height: 100%;
+        
         /* The html and body elements cannot have any padding or margin. */
       }
 
@@ -115,9 +116,9 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">DashBoard</a>
                   <ul class="dropdown-menu">
-                    <li><a href="<?php echo URL.'index.php/Student/profile';?>">Edit Profile</a></li>
+                    <li><a href="<?php echo URL.'index.php/Student/edit_profile';?>">Edit Profile</a></li>
                     <li><a href="<?php echo URL.'index.php/Student/settings';?>">Change Password</a></li>
-                    <li><a href="<?php echo URL.'index.php/Student/logout';?>">Logout</a></li>
+                    <li><a href="<?php echo URL.'index.php/login/logout';?>">Logout</a></li>
                   </ul>
             </li>
             </ul>
@@ -126,7 +127,13 @@
       </div>
     </div>
 
-
+    
       <!-- Begin page content -->
       <div class="container">
-       
+        <?php if($this->session->flashdata('message')){?>  
+   <div class="alert alert-<?php echo $this->session->flashdata('type'); ?>">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong><?php echo $this->session->flashdata('caption'); ?></strong>
+  <?php echo $this->session->flashdata('message'); ?>
+   </div>
+     <?php } ?>

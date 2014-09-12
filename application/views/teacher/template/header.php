@@ -106,10 +106,11 @@
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo URL.'index.php/teacher/noticeboard';?>">Global<?php for($i=0;$i<=12;$i++) echo'&nbsp;';?><span class="badge badge-important">6</span></a></li>
                     <li><a href="<?php echo URL.'index.php/teacher/noticeboard';?>">Departmental</a></li>
-                   
+                    <li><a href="<?php echo URL.'index.php/teacher/upload_notice';?>">Upload Notice</a></li>
                   </ul>
             </li>
              <li>  <a href="<?php echo URL.'index.php/teacher/complaint';?>">Complaint</a>  </li>
+             <li>  <a href="<?php echo URL.'index.php/teacher/show_my_students';?>">My Students</a>  </li>
             </ul>
             <ul class="nav pull-right">
               <li class="dropdown">
@@ -117,7 +118,7 @@
                   <ul class="dropdown-menu">
                     <li><a href="<?php echo URL.'index.php/teacher/profile';?>">Edit Profile</a></li>
                     <li><a href="<?php echo URL.'index.php/teacher/settings';?>">Change Password</a></li>
-                    <li><a href="<?php echo URL.'index.php/teacher/logout';?>">Logout</a></li>
+                    <li><a href="<?php echo URL.'index.php/login/logout';?>">Logout</a></li>
                   </ul>
             </li>
             </ul>

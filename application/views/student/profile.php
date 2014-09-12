@@ -6,16 +6,26 @@
             </tr>
             
             <tr>
-                <td rowspan="3" class="span2"><img src="<?php echo URL.'images/img_unknown.jpg';?>" class="img-polaroid"/></td>
+                <td rowspan="3" style='width: 150px;'><img src="<?php echo IMAGE_SERVER.'getimage.php?id='.$roll_number;?>" 
+                                                   class="img-polaroid"
+                                                   style='width:130px;height: 150px;'/></td>
                
             </tr>
         
             <tr>
                 <td>
+                    <?php
+                    switch($semester){
+                        case '1':$suffix='st';break;
+                        case '2':$suffix='nd';break;
+                        case '3':$suffix='rd';break;
+                        default:$suffix='th';
+                    }
+                    ?>
             <table class="table table-bordered">
-                <tr><td>Pankaj Tiwari</td></tr>
-                <tr><td>Semster-5th</td></tr>
-                <tr><td>Computer Science and Engineering Department</td></tr>
+                <tr><td><?php echo $student_name; ?></td></tr>
+                <tr><td>Semester: <?php echo $semester.''.$suffix; ?></td></tr>
+                <tr><td><?php echo $branch; ?></td></tr>
                 
             </table>
                     <button class="btn"><i class="icon-envelope"></i> Send Message</button>

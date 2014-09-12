@@ -59,7 +59,7 @@ class Login_model extends CI_Model {
                 return array(
                     'username'=>$query->row_array['username'],
                     'account_type'=>'s',
-                    'username'=>$query->row_array['username'],
+                    'name'=>$query->row_array['username'],
                 );
             }
         }

@@ -4,48 +4,59 @@
                       <tr style="background-color: #0064cd;color:white;">
                           <td colspan="4">Inbox</td>
                       </tr>
-                       <tr>
-                          <td colspan="4">
-                              <div class="pull-right">
-                            <button onclick='send_enable();'class='btn' id='btn1' data-toggle="tooltip" title="Reply"><i class='icon-retweet'></i></button>          
-                            &nbsp;  <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i></button>  
-                              </div>
-                              
-                          </td>
-                      </tr>
-                      <tr>
-                          <td style="width: 20px;"><center><input type="checkbox"/></center></td>
+                  </table>
+        <div style="height: 450px; overflow-y: auto;">
+                <table class="table table-bordered"  >
+                      <tr style="background-color: black;color: white;">
                           <td>Sender</td>
-                          <td class="span2">Time</td>
-                          <td class='span2'>Date</td>
+                          <td style='width:130px;text-align: center;'>Action</td>
+                          
+                          
                           
                       </tr>
                     <?php 
-                    for($i=0;$i<10;$i++){ ?>
+                    foreach($messages as $message){ ?>
                       <tr>
-                          <td s><center><input type="checkbox"/></center></td>
-                          <td>Sanjana Subhash</td>
-                           <td>4:45 PM</td>
-                          <td>11-Oct-2013</td>
-                      </tr>         
+                          <td><?php echo $message['reciever_username'];?></td>
+                          <td><div class="btn-group pull-right">
+  <button class="btn"><i class='icon-trash'></i></button>
+  <a class="btn" href="<?php echo URL.'index.php/student/sentbox/'.$message['id']; ?>"><i class='icon-eye-open'></i></a>
+  <button class="btn"><i class='icon-retweet'></i></button>
+</div>
+                        
+                             </td>
+                          
+                         
+                      </tr>   
+                      
                    <?php }?>
-                  </table>
+                </table></div>
     </div>
     <div class='span4'>
         <table class='table table-bordered'>
             <tr>
-                <td style="background-color: #0064cd;color:white;">Sender's Name</td>
+                <td style="background-color: #0064cd;color:white;">Message</td>
           
             </tr>
-            <tr>  <td><textarea class='span12 uneditable-textarea'> </textarea> </td>
-        
+            <tr>  
+            <form action='<?php echo URL.'index.php/student/sentbox';?>' id='frm1' method='post'>
+    <input type='hidden' name='sender' value = "<?php if(isset($msg)) echo $msg['reciever_username'];?>"/>
+                <td><textarea id="ta" class='input-block-level' name="message" rows="5"> 
+                    <?php if(isset($msg))
+                    {
+                        echo $msg['msg'];
+                    }
+                        ?>
+                    </textarea>
+                </td>
+            </form>
             </tr>
              <tr>  
              <td>
-                 <button onclick='send_enable();'class='btn' id='btn1' data-toggle="tooltip" title="Reply"><i class='icon-retweet'></i></button>          
-                 <button class='btn' id='btn2' data-toggle="tooltip" title="Delete"><i class='icon-trash'></i></button>  
-                  <button class='hidden' id='btn3' data-toggle="tooltip" title="Delete"><i class='icon-ok icon-white'></i> Send</button>  
-                 
+<button onclick="document.getElementById('frm1').submit();"class='btn' id='btn1'><i class='icon-retweet'></i> Reply</button>         
+<button class='btn' id='btn2'><i class='icon-trash'></i> Delete</button>  
+  
+
              </td>
              </tr>
         </table>
