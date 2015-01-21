@@ -27,9 +27,9 @@ class Login_model extends CI_Model {
             $query = $this->db->get($tablename);
            if($query->num_rows==1){
                return true;
-           }else
+           }else{
                return false;
-               
+           }  
             
         }
         
